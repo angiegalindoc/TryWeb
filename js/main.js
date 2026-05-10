@@ -1,3 +1,8 @@
+// GOOGLE SHEETS API
+
+const API_URL =
+'https://script.google.com/macros/s/AKfycbzeNgwnJc6jP6oykCIQ9N18fCUsMNeOsUCjTCq89qN_Y8-tqq5W0smUWOjYEFR0FuHZ/exec';
+
 // ANIMACIONES SCROLL
 
 const reveals = document.querySelectorAll('.reveal');
@@ -162,11 +167,6 @@ showQuotes();
 
 setInterval(showQuotes, 10000);
 
-// GOOGLE SHEETS API
-
-const API_URL =
-'https://script.google.com/macros/s/AKfycbzeNgwnJc6jP6oykCIQ9N18fCUsMNeOsUCjTCq89qN_Y8-tqq5W0smUWOjYEFR0FuHZ/exec';
-
 // ENVIAR COMENTARIOS
 
 const commentForm =
@@ -202,15 +202,11 @@ if(commentForm){
 
                 method:'POST',
 
-                mode:'no-cors',
-
-                headers:{
-                    'Content-Type':'application/json'
-                },
-
-                body:JSON.stringify(data)
+                body: JSON.stringify(data)
 
             });
+
+            addCommentToScreen(data);
 
             alert('Comentario enviado correctamente');
 
@@ -229,3 +225,210 @@ if(commentForm){
     });
 
 }
+
+// MOSTRAR COMENTARIOS EN PANTALLA
+
+const commentsSlider =
+document.getElementById('commentsSlider');
+
+function addCommentToScreen(data){
+
+    commentsSlider.innerHTML += `
+
+    <div class="comment-card">
+
+        <h4>
+            ${data.nombre} ${data.apellido}
+        </h4>
+
+        <p>
+            ${data.comentario}
+        </p>
+
+        <small>
+            ${new Date().toLocaleDateString()}
+        </small>
+
+    </div>
+
+    `;
+
+}
+
+// ENVIAR SOLICITUDES
+
+const serviceForm =
+document.getElementById('serviceForm');
+
+if(serviceForm){
+
+    serviceForm.addEventListener('submit', async (e) => {
+
+        e.preventDefault();
+
+        const data = {
+
+            type:"service",
+
+            nombre:
+            document.getElementById('solNombre').value,
+
+            apellido:
+            document.getElementById('solApellido').value,
+
+            telefono:
+            document.getElementById('solTelefono').value,
+
+            correo:
+            document.getElementById('solCorreo').value,
+
+            servicio:
+            document.getElementById('solTipo').value,
+
+            tipoCliente:
+            document.querySelector(
+                'input[name="cliente"]:checked'
+            ).value,
+
+            mensaje:
+            document.getElementById('solMensaje').value
+
+        };
+
+        try{
+
+            await fetch(API_URL, {
+
+                method:'POST',
+
+                headers:{
+                    'Content-Type':'application/json'
+                },
+
+                body:JSON.stringify(data)
+
+            });
+
+            alert(
+                'Solicitud enviada correctamente'
+            );
+
+            serviceForm.reset();
+
+        }
+
+        catch(error){
+
+            alert(
+                'Error enviando solicitud'
+            );
+
+            console.error(error);
+
+        }
+
+    });
+
+}
+
+// CARGAR COMENTARIOS DESDE GOOGLE SHEETS
+async function loadComments(){
+
+    try{
+
+        const response = await fetch(
+            API_URL + '?action=getComments'
+        );
+
+        const comentarios =
+        await response.json();
+
+        document.getElementById(
+            'commentsCount'
+        ).innerText = comentarios.length;
+
+        const commentsSlider =
+        document.getElementById(
+            'commentsSlider'
+        );
+
+        commentsSlider.innerHTML = "";
+
+        const orderedComments =
+        [...comentarios].reverse();
+
+        const duplicatedComments = [
+            ...orderedComments,
+            ...orderedComments
+        ];
+
+        duplicatedComments.forEach(item => {
+
+            commentsSlider.innerHTML += `
+
+            <div class="comment-card">
+
+                <h4>
+                    ${item.nombre}
+                    ${item.apellido}
+                </h4>
+
+                <p>
+                    ${item.comentario}
+                </p>
+
+                <small>
+                    ${new Date(item.fecha)
+                    .toLocaleDateString()}
+                </small>
+
+            </div>
+
+            `;
+
+        });
+
+    }
+
+    catch(error){
+
+        console.error(
+            'Error cargando comentarios',
+            error
+        );
+
+    }
+
+}
+
+loadComments();
+
+async function updateVisits(){
+
+    try{
+
+        const response = await fetch(
+            API_URL + '?action=visit'
+        );
+
+        const data =
+        await response.json();
+
+        document.getElementById(
+            'visits'
+        ).innerText = data.visits;
+
+    }
+
+    catch(error){
+
+        console.error(
+            'Error visitas',
+            error
+        );
+
+    }
+
+}
+
+updateVisits();
