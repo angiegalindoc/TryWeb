@@ -307,12 +307,13 @@ if(serviceForm){
 
             });
 
-            console.log("STATUS:", response.status);
+            const text =
+            await response.text();
+
+            console.log("RESPUESTA:", text);
 
             const result =
-            await response.json();
-
-            console.log("RESPUESTA:", result);
+            JSON.parse(text);
 
             if(result.success){
 
@@ -326,8 +327,6 @@ if(serviceForm){
 
                 alert(result.error);
 
-                console.error(result);
-
             }
 
         }
@@ -338,10 +337,7 @@ if(serviceForm){
                 'Error enviando solicitud'
             );
 
-            console.error(
-                'ERROR FETCH:',
-                error
-            );
+            console.error(error);
 
         }
 
