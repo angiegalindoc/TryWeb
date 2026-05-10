@@ -268,19 +268,19 @@ if(serviceForm){
 
         const data = {
 
-            type:"service",
+            type: "service",
 
             nombre:
-            document.getElementById('solNombre').value,
+            document.getElementById('solNombre').value.trim(),
 
             apellido:
-            document.getElementById('solApellido').value,
+            document.getElementById('solApellido').value.trim(),
 
             telefono:
-            document.getElementById('solTelefono').value,
+            document.getElementById('solTelefono').value.trim(),
 
             correo:
-            document.getElementById('solCorreo').value,
+            document.getElementById('solCorreo').value.trim(),
 
             servicio:
             document.getElementById('solTipo').value,
@@ -288,32 +288,47 @@ if(serviceForm){
             tipoCliente:
             document.querySelector(
                 'input[name="cliente"]:checked'
-            ).value,
+            )?.value || "",
 
             mensaje:
-            document.getElementById('solMensaje').value
+            document.getElementById('solMensaje').value.trim()
 
         };
 
+        console.log("DATA ENVIADA:", data);
+
         try{
 
-            await fetch(API_URL, {
+            const response = await fetch(API_URL, {
 
                 method:'POST',
 
-                headers:{
-                    'Content-Type':'application/json'
-                },
-
-                body:JSON.stringify(data)
+                body: JSON.stringify(data)
 
             });
 
-            alert(
-                'Solicitud enviada correctamente'
-            );
+            console.log("STATUS:", response.status);
 
-            serviceForm.reset();
+            const result =
+            await response.json();
+
+            console.log("RESPUESTA:", result);
+
+            if(result.success){
+
+                alert(
+                    'Solicitud enviada correctamente'
+                );
+
+                serviceForm.reset();
+
+            } else {
+
+                alert(result.error);
+
+                console.error(result);
+
+            }
 
         }
 
@@ -323,7 +338,10 @@ if(serviceForm){
                 'Error enviando solicitud'
             );
 
-            console.error(error);
+            console.error(
+                'ERROR FETCH:',
+                error
+            );
 
         }
 
