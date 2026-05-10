@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="img/favicon.ico">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<title>TriWeb Solutions</title>
+
+<meta name="description" content="TriWeb Solutions desarrolla páginas web profesionales y soluciones digitales para empresas y emprendedores.">
+
+<meta name="keywords" content="desarrollo web, páginas web, software, digitalización empresarial, diseño web">
+
+<meta name="author" content="TriWeb Solutions">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+<header>
+    <h1>TriWeb Solutions</h1>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#galeria">Ejemplos</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<main>
+
+<section id="inicio" class="hero">
+
+    <h1>Crea la página web de tu empresa en minutos</h1>
+
+    <p>
+        En TriWeb Solutions somos una empresa enfocada en el desarrollo de soluciones digitales que impulsan 
+        el crecimiento de las empresas en el entorno online. Nacimos con un objetivo claro: hacer que cualquier negocio, 
+        sin importar su tamaño o experiencia tecnológica, pueda tener una presencia digital profesional, efectiva y accesible.
+    </p>
+
+    <button onclick="window.location='#contacto'">
+        Solicitar información
+    </button>
+
+</section>
+
+<section id="servicios" class="section reveal">
+
+    <h2>Servicios</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>⚡ Creación rápida</h3>
+            <p>Ten tu página lista en cuestión de horas.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎨 Diseño moderno</h3>
+            <p>Interfaces atractivas que venden por ti.</p>
+        </div>
+
+        <div class="card">
+            <h3>📈 Optimizado para clientes</h3>
+            <p>Convierte visitas en compradores.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section reveal">
+
+<h2>¿Por qué elegir TriWeb Solutions?</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🚀 Rapidez</h3>
+<p>Implementamos páginas web funcionales en tiempo récord.</p>
+</div>
+
+<div class="card">
+<h3>🎯 Estrategia</h3>
+<p>Diseños enfocados en atraer clientes y generar confianza.</p>
+</div>
+
+<div class="card">
+<h3>🛠 Soporte</h3>
+<p>Acompañamos a nuestros clientes durante todo el proceso.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="catalogo" class="section reveal">
+
+    <h2>Catálogo de planes mensual</h2>
+
+    <div class="catalogo">
+
+        <div class="producto">
+            <h3>Plan Básico</h3>
+            <p>Página simple para mostrar servicios</p>
+            <strong>COP $20.000</strong>
+        </div>
+
+        <div class="producto">
+            <h3>Plan Profesional</h3>
+            <p>Incluye catálogo y contacto</p>
+            <strong>COP $27.000</strong>
+        </div>
+
+        <div class="producto">
+            <h3>Plan Empresarial</h3>
+            <p>Todo incluido + soporte + ampliación + mejoras</p>
+            <strong>COP $35.000</strong>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section stats-section reveal">
+
+    <h2>Nuestro impacto digital</h2>
+
+    <div class="stats-container">
+
+        <div class="stat-card">
+            <h3 id="visits">0</h3>
+            <p>Visitas</p>
+        </div>
+
+        <div class="stat-card">
+            <h3 id="clients">0</h3>
+            <p>Clientes</p>
+        </div>
+
+        <div class="stat-card">
+            <h3 id="projects">0</h3>
+            <p>Proyectos</p>
+        </div>
+
+        <div class="stat-card">
+            <h3 id="commentsCount">0</h3>
+            <p>Comentarios</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="galeria" class="section gallery reveal">
+
+    <h2>Ejemplos de páginas</h2>
+
+    <img src="img/blog-tipo-web.jpg" alt="Diseño web empresarial">
+
+    <img src="img/website-example-justinmind-768x492.png" alt="Ejemplo de página web">
+
+    <img src="img/110ec7_c4fd5fba711f415fb2c177f38618ded6~mv2.png" alt="Sitio web profesional">
+
+</section>
+
+<section id="nosotros" class="section reveal">
+
+    <h2>Nosotros</h2>
+
+    <p>
+        Somos <strong>Ana Martínez, Angie Galindo y Angello Luque</strong>,
+        estudiantes de ingeniería enfocados en crear soluciones digitales
+        accesibles para empresas que quieren crecer.
+    </p>
+
+</section>
+
+<section class="section api-section reveal">
+
+    <h2>Inspiración tecnológica</h2>
+
+    <div id="quote" class="quotes-container"></div>
+
+</section>
+
+<section class="section reveal">
+
+    <h2>Opiniones de clientes</h2>
+
+    <form id="commentForm" class="form-container">
+
+        <input type="text" id="nombre" placeholder="Nombre" required>
+
+        <input type="text" id="apellido" placeholder="Apellido" required>
+
+        <input type="email" id="correo" placeholder="Correo" required>
+
+        <textarea id="comentario"
+        placeholder="Escribe tu comentario..."
+        required></textarea>
+
+        <button type="submit">
+            Enviar comentario
+        </button>
+
+    </form>
+
+    <div id="commentsSlider"
+    class="comments-slider"></div>
+
+</section>
+
+<section id="contacto" class="section reveal">
+
+    <h2>Contacto</h2>
+
+    <p>
+        <strong>Directora marketing y diseño</strong><br>
+        ana.martinezric@cun.edu.co
+    </p>
+
+    <p>
+        <strong>Directora Técnica desarrollo web</strong><br>
+        angie.galindoc@cun.edu.co
+    </p>
+
+    <p>
+        <strong>CEO</strong><br>
+        angello.luque@cun.edu.co
+    </p>
+
+    <h3>Síguenos</h3>
+
+        <div class="socials">
+
+        <a href="#">
+        <i class="fab fa-instagram"></i>
+        Instagram
+        </a>
+
+        <a href="#">
+        <i class="fab fa-facebook"></i>
+        Facebook
+        </a>
+
+        <a href="#">
+        <i class="fab fa-linkedin"></i>
+        LinkedIn
+        </a>
+
+        <a href="#">
+        <i class="fab fa-github"></i>
+        GitHub
+        </a>
+
+        </div>
+
+</section>
+
+</main>
+
+<section class="section reveal">
+
+    <h2>Solicita nuestros servicios</h2>
+
+    <form id="serviceForm" class="form-container">
+
+        <input type="text"
+        id="solNombre"
+        placeholder="Nombre"
+        required>
+
+        <input type="text"
+        id="solApellido"
+        placeholder="Apellido"
+        required>
+
+        <input type="tel"
+        id="solTelefono"
+        placeholder="Teléfono"
+        required>
+
+        <input type="email"
+        id="solCorreo"
+        placeholder="Correo"
+        required>
+
+        <select id="solTipo">
+
+            <option>
+                Desarrollo web
+            </option>
+
+            <option>
+                Diseño UI/UX
+            </option>
+
+            <option>
+                Asesoramiento digital
+            </option>
+
+            <option>
+                Optimización SEO
+            </option>
+
+            <option>
+                Otro
+            </option>
+
+        </select>
+
+        <div class="checkbox-group">
+
+            <label>
+                <input type="radio"
+                name="cliente"
+                value="Persona"
+                checked>
+
+                Persona
+            </label>
+
+            <label>
+                <input type="radio"
+                name="cliente"
+                value="Empresa">
+
+                Empresa
+            </label>
+
+        </div>
+
+        <textarea id="solMensaje"
+        placeholder="Describe tu solicitud"></textarea>
+
+        <button type="submit">
+            Enviar solicitud
+        </button>
+
+    </form>
+
+</section>
+
+<footer>
+    <p>© 2026 TriWeb Solutions - Todos los derechos reservados</p>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/573008081554" target="_blank">
+💬
+</a>
+
+<script src="js/main.js"></script>
+
+<button id="topBtn">↑</button>
+
+</body>
+</html>
